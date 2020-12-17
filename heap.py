@@ -132,5 +132,9 @@ class MinHeap:
         
         # for each node in the first half of the list
         # percolate down
-        pass
+        curr_node = len(self._data) // 2 - 1
+
+        while curr_node > -1:
+            self._percolate_down(curr_node)
+            curr_node -= 1
     
