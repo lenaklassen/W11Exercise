@@ -92,7 +92,39 @@ class MinHeap:
         
         # while larger than at least one child
         # swap with smaller child and repeat    
-        pass
+        left_i = left(i)
+        right_i = right(i)
+        final_i = len(self._data) - 1
+        
+        while left_i <= final_i or right_i <= final_i:
+            if left_i <= final_i and right_i <= final_i:
+                if self._data[i] > self._data[left(i)] or self._data[i] > self._data[right(i)]:
+                    if self._data[left(i)] < self._data[right(i)]:
+                        self._data[i], self._data[left(i)] = self._data[left(i)], self._data[i]
+                        i = left(i)
+                        left_i = left(i)
+                        right_i = right(i)
+                    else:
+                        self._data[i], self._data[right(i)] = self._data[right(i)], self._data[i]
+                        i = right(i)
+                        left_i = left(i)
+                        right_i = right(i)
+                else:
+                    return
+                    
+            elif left_i <= final_i:
+                if self._data[i] > self._data[left(i)]:
+                    self._data[i], self._data[left(i)] = self._data[left(i)], self._data[i]
+                    i = left(i)
+                    left_i = left(i)
+                    right_i = right(i)
+            
+            elif right_i <= final_i:
+                if self._data[i] > self._data[right(i)]:
+                    self._data[i], self._data[right(i)] = self._data[right(i)], self._data[i]
+                    i = right(i)
+                    left_i = left(i)
+                    right_i = right(i)
     
     
     def _min_heapify(self):
