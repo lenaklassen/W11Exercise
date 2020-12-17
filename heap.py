@@ -1,5 +1,9 @@
 # helper functions
 
+class EmptyHeapException(Exception):
+    ''' Exception for when a heap is empty.'''
+    pass
+
 def left(index):
     '''Return index's left child index.
     '''
@@ -56,7 +60,16 @@ class MinHeap:
         '''Remove minimal value in self. Restore heap property.
         Raise EmptyHeapException if heap is empty.'''
         
-        pass
+        if self._data == []:
+            raise EmptyHeapException()
+        
+        self._data[len(self._data) -1], self._data[0] = self._data[0], self._data[len(self._data) -1]
+        
+        min = self._data.pop()
+        
+        self._percolate_down(0)
+        
+        return min
     
     
     def _percolate_up(self):
