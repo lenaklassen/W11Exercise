@@ -63,7 +63,13 @@ class MinHeap:
         '''Restore heap property of self after 
         adding new item'''
         
-        pass
+        end_index = len(self._data) -1
+        parent_index = parent(end_index)
+        
+        while self._data[end_index] < self._data[parent_index] and parent_index >= 0:
+            self._data[end_index], self._data[parent_index] = self._data[parent_index], self._data[end_index]
+            end_index = parent_index
+            parent_index = parent(end_index)
     
     
     def _percolate_down(self, i):
