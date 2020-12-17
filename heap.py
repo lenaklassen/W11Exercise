@@ -48,7 +48,8 @@ class MinHeap:
     def insert(self, v):
         '''Insert v in self. Maintain heap property.'''
         
-        pass
+        self._data.append(v)
+        self._percolate_up()
     
     
     def extract_min(self):
